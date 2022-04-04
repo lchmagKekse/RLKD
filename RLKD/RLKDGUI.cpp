@@ -126,4 +126,6 @@ void RLKD::RenderSettings() {
 	if (ImGui::Checkbox("Text Shadow", &KD_dropShadow_var))
 		KD_dropShadow.setValue(KD_dropShadow_var);
 
+	ImGui::NewLine();
+	ImGui::Text("Made by LchmagKekse");
 }

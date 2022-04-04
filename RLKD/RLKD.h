@@ -11,11 +11,11 @@ constexpr auto plugin_version = stringify(VERSION_MAJOR) "." stringify(VERSION_M
 class RLKD: public BakkesMod::Plugin::BakkesModPlugin, public BakkesMod::Plugin::PluginSettingsWindow/*, public BakkesMod::Plugin::PluginWindow*/
 {
 
-	float matchKills = 0, matchDeaths = 0, totalKills = 0, totalDeaths = 0;
+	float matchKills = 0.0f, matchDeaths = 0.0f, totalKills = 0.0f, totalDeaths = 0.0f;
 	std::string matchKD, totalKD;
 
 	bool plugin_Enabled = true;
-	float KD_TextSize = 30;
+	float KD_TextSize = 30.0f;
 	bool KD_Display_in_Menu = true;
 	bool show_Match_KD = true;
 	bool show_Total_KD = true;
@@ -23,8 +23,8 @@ class RLKD: public BakkesMod::Plugin::BakkesModPlugin, public BakkesMod::Plugin:
 	int KD_decimals = 2;
 	int KD_X = 0, KD_Y = 50;
 
-	std::string Total_KD_Text = "TKD: ";
-	std::string Match_KD_Text = "MKD: ";
+	std::string Total_KD_Text = "Total K/D: ";
+	std::string Match_KD_Text = "Match K/D: ";
 	char tempMatchText[64];
 	char tempTotalText[64];
 

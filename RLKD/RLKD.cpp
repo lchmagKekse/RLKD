@@ -46,12 +46,12 @@ void RLKD::onLoad() {
         KD_Display_in_Menu = cvar.getBoolValue();
     });
 
-    cvarManager->registerCvar("Total_KD_Text", "TKD: ", "Total K/D Display Text", false, false, 420, false, 420, true)
+    cvarManager->registerCvar("Total_KD_Text", "Total K/D: ", "Total K/D Display Text", false, false, 420, false, 420, true)
         .addOnValueChanged([this](std::string oldValue, CVarWrapper cvar) {
         Total_KD_Text = cvar.getStringValue();
     });
 
-    cvarManager->registerCvar("Match_KD_Text", "MKD: ", "Match K/D Display Text", false, false, 420, false, 420, true)
+    cvarManager->registerCvar("Match_KD_Text", "Match K/D: ", "Match K/D Display Text", false, false, 420, false, 420, true)
         .addOnValueChanged([this](std::string oldValue, CVarWrapper cvar) {
         Match_KD_Text = cvar.getStringValue();
     });
@@ -96,7 +96,7 @@ void RLKD::onLoad() {
         calculateKD();
     });
 
-    init();
+    gameWrapper->SetTimeout([this](GameWrapper* gw) { init(); }, 2.0f);
 }
 
 void RLKD::onUnload(){ }
@@ -122,14 +122,14 @@ void RLKD::init() {
 void RLKD::calculateKD() {
 
     std::stringstream MKD;
-    if(matchDeaths == 0)
+    if(matchDeaths == 0.0f)
         MKD << std::fixed << std::setprecision(KD_decimals) << matchKills;
     else
         MKD << std::fixed << std::setprecision(KD_decimals) << (matchKills / matchDeaths);
     matchKD = MKD.str();
 
     std::stringstream TKD;
-    if(totalDeaths == 0)
+    if(totalDeaths == 0.0f)
         TKD << std::fixed << std::setprecision(KD_decimals) << totalKills;
     else
         TKD << std::fixed << std::setprecision(KD_decimals) << (totalKills / totalDeaths);
@@ -192,13 +192,13 @@ void RLKD::Render(CanvasWrapper canvas) {
     if (show_Total_KD) {
 
         canvas.SetPosition(Vector2F{ (float)KD_X, (float)KD_Y });
-        canvas.DrawString(Total_KD_Text + totalKD, KD_TextSize / 10, KD_TextSize / 10, KD_dropShadow);
+        canvas.DrawString(Total_KD_Text + totalKD, KD_TextSize / 10.0f, KD_TextSize / 10.0f, KD_dropShadow);
     }
     
     if (show_Match_KD) {
 
         canvas.SetPosition(Vector2F{ (float)KD_X, ((float)KD_Y + (float) KD_TextSize*1.5f) });
-        canvas.DrawString(Match_KD_Text + matchKD, KD_TextSize / 10, KD_TextSize / 10, KD_dropShadow);
+        canvas.DrawString(Match_KD_Text + matchKD, KD_TextSize / 10.0f, KD_TextSize / 10.0f, KD_dropShadow);
     }
 }
 
