@@ -5,41 +5,47 @@
 #include "bakkesmod/plugin/PluginSettingsWindow.h"
 
 #include "version.h"
-constexpr auto plugin_version = stringify(VERSION_MAJOR) "." stringify(VERSION_MINOR) "." stringify(VERSION_PATCH) "." stringify(VERSION_BUILD);
+constexpr auto plugin_version = stringify(VERSION_MAJOR) "." stringify(VERSION_MINOR) "." stringify(VERSION_PATCH); // "." stringify(VERSION_BUILD);
 
 
-class RLKD: public BakkesMod::Plugin::BakkesModPlugin/*, public BakkesMod::Plugin::PluginSettingsWindow*//*, public BakkesMod::Plugin::PluginWindow*/
+class RLKD: public BakkesMod::Plugin::BakkesModPlugin, public BakkesMod::Plugin::PluginSettingsWindow/*, public BakkesMod::Plugin::PluginWindow*/
 {
 
-	//std::shared_ptr<bool> enabled;
+	float matchKills = 0, matchDeaths = 0, totalKills = 0, totalDeaths = 0;
+	std::string matchKD, totalKD;
 
-	//Boilerplate
+	bool plugin_Enabled = true;
+	float KD_TextSize = 30;
+	bool KD_Display_in_Menu = true;
+	bool show_Match_KD = true;
+	bool show_Total_KD = true;
+	bool KD_dropShadow = true;
+	int KD_decimals = 2;
+	int KD_X = 0, KD_Y = 50;
+
+	std::string Total_KD_Text = "TKD: ";
+	std::string Match_KD_Text = "MKD: ";
+	char tempMatchText[64];
+	char tempTotalText[64];
+
+
 	virtual void onLoad();
 	virtual void onUnload();
+	void init();
 
-	// Inherited via PluginSettingsWindow
-	/*
+	void calculateKD();
+	void onStatTickerMessage(void* params);
+
+	void Render(CanvasWrapper canvas);
+
+	void saveData();
+	bool loadData();
+	const char* getSaveDir();
+	const char* getSaveFile();
+
 	void RenderSettings() override;
 	std::string GetPluginName() override;
 	void SetImGuiContext(uintptr_t ctx) override;
-	*/
 
-	// Inherited via PluginWindow
-	/*
-
-	bool isWindowOpen_ = false;
-	bool isMinimized_ = false;
-	std::string menuTitle_ = "RLKD";
-
-	virtual void Render() override;
-	virtual std::string GetMenuName() override;
-	virtual std::string GetMenuTitle() override;
-	virtual void SetImGuiContext(uintptr_t ctx) override;
-	virtual bool ShouldBlockInput() override;
-	virtual bool IsActiveOverlay() override;
-	virtual void OnOpen() override;
-	virtual void OnClose() override;
-	
-	*/
 };
 
