@@ -89,7 +89,7 @@ void RLKD::onLoad() {
             onStatTickerMessage(params);
     });
 
-    gameWrapper->HookEventPost("Function TAGame.GFxData_Playlist_TA.HandleSkillUpdateOnGameJoin",
+    gameWrapper->HookEventPost("Function TAGame.GFxData_MenuStack_TA.HandleMapLoad",
         [this](std::string eventName) {
         matchKills = 0;
         matchDeaths = 0;
