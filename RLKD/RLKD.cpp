@@ -103,7 +103,7 @@ void RLKD::onUnload(){ }
 
 void RLKD::init() {
 
-    if (_mkdir(getSaveDir()) == 0)
+    if (_mkdir(getSaveDir().c_str()) == 0)
         cvarManager->log("SavePath created");
 
     if(std::filesystem::exists(getSaveFile()))
@@ -236,16 +236,14 @@ bool RLKD::loadData() {
     return true;
 }
 
-const char* RLKD::getSaveDir() {
+std::string RLKD::getSaveDir() {
 
     auto BMpath = gameWrapper->GetDataFolder() / "RLKD";
-    std::string BMpath_str = BMpath.string();
-    return BMpath_str.c_str();
+    return BMpath.string();
 }
 
-const char* RLKD::getSaveFile() {
+std::string RLKD::getSaveFile() {
 
     auto BMpath = gameWrapper->GetDataFolder() / "RLKD" / "RLKD.txt";
-    std::string BMpath_str = BMpath.string();
-    return BMpath_str.c_str();
+    return BMpath.string();
 }

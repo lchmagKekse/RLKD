@@ -40,8 +40,8 @@ class RLKD: public BakkesMod::Plugin::BakkesModPlugin, public BakkesMod::Plugin:
 
 	void saveData();
 	bool loadData();
-	const char* getSaveDir();
-	const char* getSaveFile();
+	std::string getSaveDir();
+	std::string getSaveFile();
 
 	void RenderSettings() override;
 	std::string GetPluginName() override;
