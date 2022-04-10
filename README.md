@@ -6,7 +6,7 @@ This plugin shows your total and current match K/D.
 You can fully customize the display text in the plugin settings.
 
 ## How to use
- - Install the plugin on [bakkesplugins.com](https://bakkesplugins.com/plugins/view/321)
+ - Download and install the plugin manually [here](https://github.com/lchmagKekse/RLKD/releases/tag/1.0.0)
  - In Rocket League press F2 
  - Go to Plugins -> K/D Ratio
  - Enable plugin and change the settings to meet your preferences
