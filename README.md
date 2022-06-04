@@ -17,4 +17,4 @@ When enabled, the plugin does only count demos in online matches and private mat
 To reset your settings, simply reload the plugin through the console.  
 If you want to reset your total K/D go into `[bakkesmod_folder]\data\RLKD` and delete the `RLKD.txt` file.
 ___
-If you find bugs or have suggestions for improvement, contact me on discord: ***lchmagKekse#0420***
+If you find bugs or have suggestions for improvement, contact me on discord: ***lchmagKekse#0475***
